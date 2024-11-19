@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-danger">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    </div> 
+    <div class="row">
+        <h3>Edit your details</h3> 
+    </div>
+    <div clas="row">
+        <form method="post">
+            {% csrf_token %}
+            <div class="row">
+                <div clas="row">
+                    <div class="col-4">
+                        {{ form.as_div }}
+                    </div>
+                    <div class="col-4">
+                        <input type="submit" class="button" value="Update" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}

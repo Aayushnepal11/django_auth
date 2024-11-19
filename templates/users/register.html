@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-danger">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="row">
+            <h3>Start your journey here</h3> 
+        </div>
+        <div clas="row">
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="row">
+                    <div clas="row">
+                        <div class="col-4">
+                            {{ form.as_div }}
+                        </div>
+                        <div class="col-4">
+                            <input type="submit" class="button" value="Register" />
+                        </div>
+                        <div class="col-4">
+                            <p>Already have and account? <a href="{% url "users:home" %}" class="btn"/>Login</a></p>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock content %}

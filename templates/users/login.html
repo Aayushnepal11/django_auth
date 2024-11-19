@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="{% static "./img/banner.png" %}" class="image_thumbnail"/>
+            </div>
+            <div class="col-md-4">
+                <form  method="post" class="user_login" id="user_login">
+                    {% csrf_token %}
+                    <div class="col-4">
+                        <label for="username" class="title">
+                            Username:
+                        </label>
+                        <input type="text" name="username" class="username" id="username">
+                    </div>
+                    <div class="col-4">
+                        <label for="password" class="title">
+                            Password:
+                        </label>
+                        <input type="password" name="password" class="password" id="password">
+                    </div>
+                    <div class="col-4">
+                        <input type="submit" value="Login" class="button" id="button">
+                    </div>
+                    <div class="col-4">
+                        <p>Do you have and account? <a href="{% url "users:register" %}" class="btn">create an account</a></p> 
+                        <a class="nav_link" href="#">forgot password?</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <h3><span style="color:red;">F</span>ind <span style="color:green;">Y</span>our <span style="color:blue">O</span>wn <span style="color:yellow;">W</span>ay</h3>
+        </div>
+    </div>
+{% endblock content %}

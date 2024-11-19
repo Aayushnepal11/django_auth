@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="row">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-danger">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <div class="container">
+        <div class="row">
+            <table>
+                <tr>
+                    <th>Id</th>
+                    <th>username</th>
+                    <th>Actions</th>
+                </tr>
+            {% for user in users %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{user}}</td>
+                <td>
+                    <a href="{% url "users:users_update_view" user.id%}">Edit</a>
+                    <a href="{% url "users:user_delete" user.id%}">Delete</a>
+                    <a href="{% url "users:users_detail_view" user.id %}">View</a>
+                </td>
+            </tr>
+            {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endblock content %}
